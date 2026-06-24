@@ -9,6 +9,8 @@ services:
     startCommand: uvicorn main:app --host 0.0.0.0 --port $PORT
     healthCheckPath: /health
     envVars:
+      - key: PYTHON_VERSION
+        value: "3.12.7"  # pin sur 3.12 (3.14 par défaut de Render = pas de wheels pydantic-core)
       - key: SMTP_HOST
         value: smtp.gmail.com
       - key: SMTP_PORT
