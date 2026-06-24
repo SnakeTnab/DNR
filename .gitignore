@@ -1,0 +1,47 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# Secrets - NE JAMAIS POUSSER
+.env
+.env.local
+.env.*.local
+*.pem
+*.key
+
+# IDE / Editors
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+/tmp/
+logs/
+
+# Tampermonkey local backups
+*.user.js.bak
+
+# OS
+desktop.ini
+
+# Uploads de tests
+/test-data/
+*.html.bak

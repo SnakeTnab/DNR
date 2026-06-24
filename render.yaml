@@ -1,0 +1,27 @@
+services:
+  - type: web
+    name: dnr-auto-backend
+    runtime: python
+    plan: free  # passer en starter si dépassement quota (cold-start après 15 min sinon)
+    region: frankfurt
+    rootDir: backend  # Render fera "cd backend" avant build/start
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn main:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /health
+    envVars:
+      - key: SMTP_HOST
+        value: smtp.gmail.com
+      - key: SMTP_PORT
+        value: "587"
+      - key: SMTP_USER
+        sync: false  # à définir dans le dashboard Render (secret)
+      - key: SMTP_PASS
+        sync: false  # mot de passe d'application Gmail
+      - key: FROM_EMAIL
+        sync: false  # généralement = SMTP_USER
+      - key: TO_EMAIL
+        value: dnr-investigations@eulmdxdasboard.amzl.amazon.dev
+      - key: API_KEY
+        sync: false  # openssl rand -hex 32
+      - key: LOG_TO_FILE
+        value: "1"
